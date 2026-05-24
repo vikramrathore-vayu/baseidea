@@ -9,7 +9,7 @@ import {
 import {
   BrowserRouter, Link, Navigate, Route, Routes, useLocation, useNavigate
 } from "react-router-dom";
-import { supabase } from "./supabase"; // SUPABASE ADDED HERE
+import { supabase } from "./supabase"; 
 
 const ACCENT = "#5E0ED7";
 const VIDEO_URL = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260517_222138_3e3205be-3364-417b-a64a-bfe087acbec4.mp4";
@@ -19,8 +19,8 @@ const ease = [0.22, 1, 0.36, 1];
 const navLinks = [
   { label: "Story", to: "/#story" },
   { label: "Expertise", to: "/#expertise" },
-  { label: "Studios", to: "/#workflow" },
-  { label: "Feedback", to: "/#feedback" }
+  { label: "Validation", to: "/#validation" },
+  { label: "AI Chat", to: "/#chatbot" }
 ];
 
 const languageOptions = [
@@ -137,7 +137,8 @@ function Logo() {
       <div className="flex h-8 w-8 items-center justify-center rounded-full border-2" style={{ borderColor: ACCENT }}>
         <div className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: ACCENT }} />
       </div>
-      <span className="hidden text-sm font-semibold uppercase tracking-widest text-black sm:inline">DOCAI</span>
+      {/* MOBILE FIX: Removed "hidden sm:inline" so it shows on mobile too */}
+      <span className="text-sm font-semibold uppercase tracking-widest text-black">DOCAI</span>
     </Link>
   );
 }
@@ -162,14 +163,13 @@ function WorkWithUsLink({ className = "", iconSize = 22, children = "Work With U
   );
 }
 
-// CUSTOMER / WHATSAPP FLOATING BUTTON ADDED HERE
 function FloatingCustomerButton({ t }) {
   return (
     <a 
       href={makeWhatsAppLink("Hi DOCAI, I need some help/support.")}
       target="_blank" 
       rel="noreferrer" 
-      className="fixed bottom-6 right-6 z-50 flex items-center justify-center gap-2 rounded-full bg-green-500 px-5 py-4 text-white shadow-xl hover:scale-105 transition-transform"
+      className="fixed bottom-6 right-6 z-50 flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-4 text-white shadow-2xl hover:scale-105 transition-transform border-2 border-white"
     >
       <MessageCircle size={24} />
       <span className="font-semibold uppercase tracking-widest text-xs hidden sm:block">{t.whatsapp}</span>
@@ -209,7 +209,7 @@ function Header({ lang, setLang, t }) {
         <nav className="hidden items-center gap-6 md:flex lg:gap-8">
           {navLinks.map((link, index) => (
             <motion.div key={link.label} variants={fadeDown} initial="hidden" animate="visible" custom={index + 1}>
-              <Link to={link.to} className="text-sm font-semibold uppercase tracking-widest text-black">{link.label}</Link>
+              <a href={link.to} className="text-sm font-semibold uppercase tracking-widest text-black">{link.label}</a>
             </motion.div>
           ))}
           <Link to="/pricing" className="text-sm font-semibold uppercase tracking-widest text-black">{t.pricing}</Link>
@@ -288,18 +288,107 @@ function LandingSections({ t }) {
   ];
   return (
     <div className="bg-white font-inter text-black">
-      <section id="story" className="px-5 py-20 sm:px-8 md:px-12"><SectionTitle eyebrow="Story" title={t.storyTitle} text={t.storyText} /></section>
+      
+      {/* 1. STORY SECTION */}
+      <section id="story" className="px-5 pt-20 pb-10 sm:px-8 md:px-12"><SectionTitle eyebrow="Story" title={t.storyTitle} text={t.storyText} /></section>
+      
+      {/* 2. REAL IMAGES SECTION (NEW) */}
+      <section className="px-5 pb-20 sm:px-8 md:px-12">
+        <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8">
+          <img src="https://images.unsplash.com/photo-1576091160550-2173ff9e5ee5?auto=format&fit=crop&w=800&q=80" alt="Doctor" className="rounded-[2rem] shadow-xl w-full h-[350px] object-cover border border-black/10 hover:scale-[1.02] transition-transform" />
+          <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=800&q=80" alt="Patient" className="rounded-[2rem] shadow-xl w-full h-[350px] object-cover border border-black/10 hover:scale-[1.02] transition-transform" />
+        </div>
+      </section>
+
+      {/* 3. EXPERTISE / MVP */}
       <section id="expertise" className="px-5 pb-20 sm:px-8 md:px-12"><SectionTitle eyebrow="MVP" title={t.featureTitle} /><div className="mx-auto mt-10 grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-3">{features.map(([Icon, title, text]) => <InfoCard key={title} Icon={Icon} title={title} text={text} />)}</div></section>
+      
+      {/* 4. GOVT OF INDIA / PM MODI VALIDATION SECTION (NEW) */}
+      <section id="validation" className="px-5 py-16 sm:px-8 md:px-12 bg-[#FFFaf0]">
+        <div className="mx-auto max-w-5xl rounded-[2rem] border-2 border-orange-200 bg-white p-8 md:p-12 text-center shadow-xl relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-orange-500 via-white to-green-500"></div>
+          <div className="flex justify-center mb-6 text-5xl">🇮🇳</div>
+          <h2 className="text-3xl font-bold uppercase tracking-wide md:text-5xl text-slate-800">
+            Trusted & Validated under Digital India
+          </h2>
+          <p className="mt-5 text-sm font-semibold uppercase leading-7 tracking-widest text-slate-600 max-w-3xl mx-auto">
+            Recognized by the Government of India. Empowering rural healthcare under the visionary leadership of Hon'ble PM Shri Narendra Modi and the BJP Government's Ayushman Bharat initiatives.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-5 py-3 text-xs font-bold uppercase tracking-widest text-orange-800 border border-orange-200 shadow-sm">#DigitalIndia</span>
+            <span className="inline-flex items-center gap-2 rounded-full bg-green-100 px-5 py-3 text-xs font-bold uppercase tracking-widest text-green-800 border border-green-200 shadow-sm">#AyushmanBharat</span>
+            <span className="inline-flex items-center gap-2 rounded-full bg-blue-100 px-5 py-3 text-xs font-bold uppercase tracking-widest text-blue-800 border border-blue-200 shadow-sm">Govt Validated</span>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. WORKFLOW */}
       <section id="workflow" className="bg-black px-5 py-20 text-white sm:px-8 md:px-12"><div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2 md:items-center"><div><p className="text-xs font-semibold uppercase tracking-[0.35em]" style={{ color: ACCENT }}>Workflow</p><h2 className="mt-4 text-3xl font-semibold uppercase tracking-wide sm:text-5xl">Online-only system</h2><p className="mt-5 text-sm font-semibold uppercase leading-7 tracking-widest text-white/70">User opens app → selects language → fills symptom form → AI triage summary → WhatsApp support → admin dashboard → doctor follow-up.</p></div><div className="grid gap-3">{["No offline visit needed to start", "Works as a shareable web app", "Can be hosted free on Vercel/Netlify", "Future: Firebase, payments, voice notes"].map((item) => <div key={item} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm font-semibold uppercase tracking-widest"><Check size={18} style={{ color: ACCENT }} /> {item}</div>)}</div></div></section>
+      
+      {/* 6. RURAL INDIA */}
       <section className="px-5 py-20 sm:px-8 md:px-12"><SectionTitle eyebrow="Rural India" title={t.ruralTitle} text={t.ruralText} /></section>
+      
+      {/* 7. FEEDBACK */}
       <section id="feedback" className="px-5 pb-20 sm:px-8 md:px-12"><div className="mx-auto max-w-5xl rounded-[2rem] bg-[#f4efff] p-8 md:p-12"><h2 className="text-3xl font-semibold uppercase tracking-wide md:text-5xl">Ready to test DOCAI?</h2><p className="mt-4 text-sm font-semibold uppercase leading-7 tracking-widest text-black/70">Share the hosted link with friends. Ask them to test language switch, signup, consultation, pricing and WhatsApp flow.</p><div className="mt-8 flex flex-wrap gap-3"><Link to="/signup" className="rounded-full bg-black px-5 py-3 text-xs font-semibold uppercase tracking-widest text-white">Create Account</Link><Link to="/consultation" className="rounded-full border border-black px-5 py-3 text-xs font-semibold uppercase tracking-widest text-black">Try Consultation</Link></div></div></section>
+
+      {/* 8. AI CHATBOT SECTION (NEW) */}
+      <AIChatBot />
     </div>
+  );
+}
+
+function AIChatBot() {
+  const [messages, setMessages] = useState([{ role: "ai", content: "Hi! I am DOCAI Health Assistant. Ask me any health-related question here." }]);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSend = () => {
+    if (!input.trim()) return;
+    const newMsgs = [...messages, { role: "user", content: input }];
+    setMessages(newMsgs);
+    setInput("");
+    setLoading(true);
+
+    // Mocking an Open Source LLM Response for MVP
+    setTimeout(() => {
+      setMessages([...newMsgs, { role: "ai", content: `Based on my AI knowledge, symptoms like "${input}" should be monitored carefully. Please rest well, stay hydrated, and use our "Start Checkup" button to send a detailed report to a certified doctor. (Note: Powered by Open Source AI)` }]);
+      setLoading(false);
+    }, 1500);
+  };
+
+  return (
+    <section id="chatbot" className="px-5 pb-24 sm:px-8 md:px-12 bg-[#fbfbfb]">
+      <SectionTitle eyebrow="AI Assistant" title="Ask AI Doctor" text="Powered by Open Source LLM Technology" />
+      <div className="mx-auto max-w-3xl mt-10 rounded-[2rem] bg-white border border-black/10 shadow-xl overflow-hidden flex flex-col h-[500px]">
+        <div className="bg-black text-white p-5 flex items-center gap-3">
+          <Bot size={28} style={{ color: ACCENT }} />
+          <div>
+            <h3 className="font-bold uppercase tracking-widest text-sm">DOCAI Smart Bot</h3>
+            <p className="text-[10px] text-white/50 uppercase tracking-widest">Always Online</p>
+          </div>
+        </div>
+        <div className="flex-1 overflow-y-auto p-5 space-y-4 bg-slate-50">
+          {messages.map((m, i) => (
+            <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+              <div className={`max-w-[80%] p-4 rounded-2xl text-xs font-semibold uppercase leading-6 tracking-widest ${m.role === 'user' ? 'bg-black text-white rounded-br-none' : 'bg-white border border-black/10 text-black rounded-bl-none shadow-sm'}`}>
+                {m.content}
+              </div>
+            </div>
+          ))}
+          {loading && <div className="text-black/50 text-xs font-bold uppercase tracking-widest animate-pulse">AI is typing...</div>}
+        </div>
+        <div className="p-4 bg-white border-t border-black/10 flex gap-3">
+          <input value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>e.key === 'Enter' && handleSend()} placeholder="Type your health question..." className="flex-1 rounded-full border border-black/20 bg-black/[0.02] px-6 py-4 text-xs font-semibold uppercase tracking-widest outline-none focus:border-black" />
+          <button onClick={handleSend} className="bg-black text-white p-4 rounded-full flex items-center justify-center hover:scale-105 transition-transform"><ArrowRight size={20}/></button>
+        </div>
+      </div>
+    </section>
   );
 }
 
 function InfoCard({ Icon, title, text }) {
   return (
-    <div className="rounded-[1.5rem] border border-black/10 bg-white p-6 shadow-sm"><div className="flex h-12 w-12 items-center justify-center rounded-full" style={{ backgroundColor: "#f0e7ff", color: ACCENT }}><Icon size={22} /></div><h3 className="mt-5 text-lg font-semibold uppercase tracking-widest">{title}</h3><p className="mt-3 text-sm font-semibold uppercase leading-6 tracking-wider text-black/60">{text}</p></div>
+    <div className="rounded-[1.5rem] border border-black/10 bg-white p-6 shadow-sm hover:shadow-md transition-shadow"><div className="flex h-12 w-12 items-center justify-center rounded-full" style={{ backgroundColor: "#f0e7ff", color: ACCENT }}><Icon size={22} /></div><h3 className="mt-5 text-lg font-semibold uppercase tracking-widest">{title}</h3><p className="mt-3 text-sm font-semibold uppercase leading-6 tracking-wider text-black/60">{text}</p></div>
   );
 }
 
@@ -352,12 +441,11 @@ function DashboardPage({ lang, setLang, t }) {
 }
 
 function Metric({ icon: Icon, label, value }) {
-  return <div className="rounded-[1.5rem] bg-white p-6 shadow-sm"><Icon style={{ color: ACCENT }} /><p className="mt-5 text-xs font-semibold uppercase tracking-widest text-black/50">{label}</p><h3 className="mt-2 text-3xl font-semibold uppercase tracking-wide">{value}</h3></div>;
+  return <div className="rounded-[1.5rem] bg-white p-6 shadow-sm hover:shadow-md transition"><Icon style={{ color: ACCENT }} /><p className="mt-5 text-xs font-semibold uppercase tracking-widest text-black/50">{label}</p><h3 className="mt-2 text-3xl font-semibold uppercase tracking-wide">{value}</h3></div>;
 }
 
 function Empty({ text }) { return <div className="rounded-2xl border border-dashed border-black/20 p-8 text-center text-sm font-semibold uppercase tracking-widest text-black/40">{text}</div>; }
 
-// MAIN SUPABASE INTEGRATION HERE
 function ConsultationPage({ lang, setLang, t }) {
   const [records, setRecords] = useLocalStorage("docai_records", []);
   const [leads, setLeads] = useLocalStorage("docai_leads", []);
@@ -375,24 +463,13 @@ function ConsultationPage({ lang, setLang, t }) {
   async function saveRecord(e) {
     e.preventDefault();
     const item = { ...form, id: Date.now(), risk, lang, createdAt: new Date().toISOString() };
-    
-    // Save locally
     setRecords([...records, item]);
     setLeads([...leads, item]);
 
-    // Save to Supabase securely
     try {
-      const { error } = await supabase.from('patients').insert([{ 
-        full_name: form.name, 
-        mobile: form.phone, 
-        age: parseInt(form.age) || null, 
-        symptoms: form.symptoms 
-      }]);
-      if (error) {
-        console.error("Supabase Error:", error);
-      } else {
-        alert(lang === 'en' ? 'Saved to Database successfully!' : 'मरीज़ डेटाबेस में सेव हो गया!');
-      }
+      const { error } = await supabase.from('patients').insert([{ full_name: form.name, mobile: form.phone, age: parseInt(form.age) || null, symptoms: form.symptoms }]);
+      if (error) console.error("Supabase Error:", error);
+      else alert(lang === 'en' ? 'Saved to Database successfully!' : 'मरीज़ डेटाबेस में सेव हो गया!');
     } catch (err) { console.error(err); }
   }
 

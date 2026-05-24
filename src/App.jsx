@@ -17,10 +17,10 @@ const WHATSAPP_NUMBER = "917851067550";
 const ease = [0.22, 1, 0.36, 1];
 
 const navLinks = [
-  { label: "Story", to: "/#story" },
-  { label: "Expertise", to: "/#expertise" },
   { label: "Validation", to: "/#validation" },
-  { label: "AI Chat", to: "/#chatbot" }
+  { label: "AI Chat", to: "/#chatbot" },
+  { label: "Expertise", to: "/#expertise" },
+  { label: "Story", to: "/#story" }
 ];
 
 const languageOptions = [
@@ -38,8 +38,8 @@ const translations = {
     cta: "Work With Us", start: "Start Checkup", login: "Login", signup: "Sign Up",
     dashboard: "Dashboard", pricing: "Pricing", admin: "Admin", whatsapp: "WhatsApp Help",
     stats1: "RURAL\nPATIENTS", stats2: "AI\nCHECKUPS", stats3: "DOCTOR\nNETWORK",
-    storyTitle: "Built for people who cannot travel for every health question.",
-    storyText: "DOCAI is an online-first healthcare assistance MVP. It can collect symptoms, give safe AI guidance, store simple records, capture leads on WhatsApp and help your team route cases to doctors.",
+    storyTitle: "How Vikram Rathore Made DOCAI For India",
+    storyText: "Founder Mr. Vikram Rathore saw that India has a massive health access problem, especially in rural areas where people cannot travel for every small health issue. DOCAI is his online-first solution to collect symptoms, give safe AI guidance, capture WhatsApp leads and route serious cases to doctors.",
     featureTitle: "What the MVP includes", pricingTitle: "Simple plans for testing revenue",
     ruralTitle: "Language barrier solved",
     ruralText: "Users can switch language anytime. For rural India, the app keeps words simple, uses WhatsApp, and supports voice-first workflows in future versions.",
@@ -59,8 +59,8 @@ const translations = {
     cta: "हमसे जुड़ें", start: "चेकअप शुरू करें", login: "लॉगिन", signup: "साइन अप",
     dashboard: "डैशबोर्ड", pricing: "प्राइसिंग", admin: "एडमिन", whatsapp: "WhatsApp सहायता",
     stats1: "ग्रामीण\nमरीज", stats2: "AI\nचेकअप", stats3: "डॉक्टर\nनेटवर्क",
-    storyTitle: "उन लोगों के लिए जो हर health question के लिए travel नहीं कर सकते।",
-    storyText: "DOCAI एक online-first healthcare assistance MVP है। यह symptoms collect करता है, safe AI guidance देता है, simple records रखता है, WhatsApp leads capture करता है और cases doctors तक route करता है।",
+    storyTitle: "विक्रम राठौर ने भारत के लिए DOCAI कैसे बनाया",
+    storyText: "Founder Mr. Vikram Rathore ने देखा कि India में health access की बहुत बड़ी problem है। DOCAI इसी problem का online-first solution है: symptoms collect, safe AI guidance, records, WhatsApp leads और serious cases को doctors तक route करना।",
     featureTitle: "MVP में क्या-क्या है", pricingTitle: "Revenue test करने के लिए simple plans",
     ruralTitle: "Language barrier का solution",
     ruralText: "User कभी भी language change कर सकता है। Rural India के लिए app simple words, WhatsApp और future में voice-first workflow support करेगा।",
@@ -80,8 +80,8 @@ const translations = {
     cta: "Work With Us", start: "Checkup Start Karo", login: "Login", signup: "Sign Up",
     dashboard: "Dashboard", pricing: "Pricing", admin: "Admin", whatsapp: "WhatsApp Help",
     stats1: "RURAL\nPATIENTS", stats2: "AI\nCHECKUPS", stats3: "DOCTOR\nNETWORK",
-    storyTitle: "Jinko har health question ke liye travel nahi karna chahiye, unke liye.",
-    storyText: "DOCAI online-first healthcare assistance MVP hai: symptoms collect, AI guidance, records, WhatsApp leads aur doctor routing.",
+    storyTitle: "Vikram Rathore ne DOCAI India ke liye kaise banaya",
+    storyText: "Founder Mr. Vikram Rathore ne dekha ki India me health access badi problem hai. DOCAI isi issue ka online-first solution hai: symptoms collect, AI guidance, records, WhatsApp leads aur doctor routing.",
     featureTitle: "MVP features", pricingTitle: "Revenue test karne ke plans",
     ruralTitle: "Language barrier solve", ruralText: "User language switch kar sakta hai. Rural users ke liye simple words + WhatsApp flow.",
     consultTitle: "AI / Doctor Consultation", consultSub: "Questions answer karo. DOCAI WhatsApp share karne layak summary banayega.",
@@ -99,8 +99,8 @@ const translations = {
     cta: "आमच्याशी संपर्क", start: "Checkup सुरू करा", login: "Login", signup: "Sign Up",
     dashboard: "Dashboard", pricing: "Pricing", admin: "Admin", whatsapp: "WhatsApp मदत",
     stats1: "ग्रामीण\nरुग्ण", stats2: "AI\nCheckups", stats3: "Doctor\nNetwork",
-    storyTitle: "प्रत्येक आरोग्य प्रश्नासाठी प्रवास करू न शकणाऱ्या लोकांसाठी.",
-    storyText: "DOCAI online-first healthcare assistance MVP आहे: symptoms collect, AI guidance, records, WhatsApp leads आणि doctor routing.",
+    storyTitle: "विक्रम राठौर यांनी भारतासाठी DOCAI कसे बनवले",
+    storyText: "Founder Mr. Vikram Rathore यांनी पाहिले की India मध्ये health access ही मोठी problem आहे. DOCAI हा त्याच issue चा online-first solution आहे.",
     featureTitle: "MVP मध्ये काय आहे", pricingTitle: "Revenue test साठी plans",
     ruralTitle: "Language barrier solution", ruralText: "User language switch करू शकतो. Rural users साठी simple words + WhatsApp flow.",
     consultTitle: "AI / Doctor Consultation", consultSub: "काही questions answer करा. DOCAI WhatsApp summary तयार करेल.",
@@ -137,7 +137,6 @@ function Logo() {
       <div className="flex h-8 w-8 items-center justify-center rounded-full border-2" style={{ borderColor: ACCENT }}>
         <div className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: ACCENT }} />
       </div>
-      {/* MOBILE FIX: Removed "hidden sm:inline" so it shows on mobile too */}
       <span className="text-sm font-semibold uppercase tracking-widest text-black">DOCAI</span>
     </Link>
   );
@@ -187,7 +186,7 @@ function MobileMenu({ isOpen, onClose, lang, setLang, t }) {
           <nav className="mt-12 flex flex-col gap-7">
             {[...navLinks, { label: t.pricing, to: "/pricing" }, { label: t.login, to: "/login" }, { label: t.dashboard, to: "/dashboard" }].map((link, index) => (
               <motion.div key={link.label} initial={{ opacity: 0, x: -18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.08 + index * 0.06, duration: 0.45, ease }}>
-                <Link to={link.to} onClick={onClose} className="text-3xl font-semibold uppercase tracking-widest text-black">{link.label}</Link>
+                <a href={link.to} onClick={onClose} className="text-3xl font-semibold uppercase tracking-widest text-black">{link.label}</a>
               </motion.div>
             ))}
           </nav>
@@ -287,25 +286,11 @@ function LandingSections({ t }) {
     [ShieldCheck, "Safety Disclaimer", "Clear emergency and doctor-consultation warnings."]
   ];
   return (
-    <div className="bg-white font-inter text-black">
+    <div className="bg-[#fbfbfb] font-inter text-black">
       
-      {/* 1. STORY SECTION */}
-      <section id="story" className="px-5 pt-20 pb-10 sm:px-8 md:px-12"><SectionTitle eyebrow="Story" title={t.storyTitle} text={t.storyText} /></section>
-      
-      {/* 2. REAL IMAGES SECTION (NEW) */}
-      <section className="px-5 pb-20 sm:px-8 md:px-12">
-        <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8">
-          <img src="https://images.unsplash.com/photo-1576091160550-2173ff9e5ee5?auto=format&fit=crop&w=800&q=80" alt="Doctor" className="rounded-[2rem] shadow-xl w-full h-[350px] object-cover border border-black/10 hover:scale-[1.02] transition-transform" />
-          <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=800&q=80" alt="Patient" className="rounded-[2rem] shadow-xl w-full h-[350px] object-cover border border-black/10 hover:scale-[1.02] transition-transform" />
-        </div>
-      </section>
-
-      {/* 3. EXPERTISE / MVP */}
-      <section id="expertise" className="px-5 pb-20 sm:px-8 md:px-12"><SectionTitle eyebrow="MVP" title={t.featureTitle} /><div className="mx-auto mt-10 grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-3">{features.map(([Icon, title, text]) => <InfoCard key={title} Icon={Icon} title={title} text={text} />)}</div></section>
-      
-      {/* 4. GOVT OF INDIA / PM MODI VALIDATION SECTION (NEW) */}
-      <section id="validation" className="px-5 py-16 sm:px-8 md:px-12 bg-[#FFFaf0]">
-        <div className="mx-auto max-w-5xl rounded-[2rem] border-2 border-orange-200 bg-white p-8 md:p-12 text-center shadow-xl relative overflow-hidden">
+      {/* 1. GOVT OF INDIA VALIDATION */}
+      <section id="validation" className="px-5 py-16 sm:px-8 md:px-12 bg-white border-b border-black/5">
+        <div className="mx-auto max-w-5xl rounded-[2rem] border-2 border-orange-200 bg-[#FFFaf0] p-8 md:p-12 text-center shadow-xl relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-orange-500 via-white to-green-500"></div>
           <div className="flex justify-center mb-6 text-5xl">🇮🇳</div>
           <h2 className="text-3xl font-bold uppercase tracking-wide md:text-5xl text-slate-800">
@@ -322,64 +307,117 @@ function LandingSections({ t }) {
         </div>
       </section>
 
-      {/* 5. WORKFLOW */}
-      <section id="workflow" className="bg-black px-5 py-20 text-white sm:px-8 md:px-12"><div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2 md:items-center"><div><p className="text-xs font-semibold uppercase tracking-[0.35em]" style={{ color: ACCENT }}>Workflow</p><h2 className="mt-4 text-3xl font-semibold uppercase tracking-wide sm:text-5xl">Online-only system</h2><p className="mt-5 text-sm font-semibold uppercase leading-7 tracking-widest text-white/70">User opens app → selects language → fills symptom form → AI triage summary → WhatsApp support → admin dashboard → doctor follow-up.</p></div><div className="grid gap-3">{["No offline visit needed to start", "Works as a shareable web app", "Can be hosted free on Vercel/Netlify", "Future: Firebase, payments, voice notes"].map((item) => <div key={item} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm font-semibold uppercase tracking-widest"><Check size={18} style={{ color: ACCENT }} /> {item}</div>)}</div></div></section>
-      
-      {/* 6. RURAL INDIA */}
-      <section className="px-5 py-20 sm:px-8 md:px-12"><SectionTitle eyebrow="Rural India" title={t.ruralTitle} text={t.ruralText} /></section>
-      
-      {/* 7. FEEDBACK */}
-      <section id="feedback" className="px-5 pb-20 sm:px-8 md:px-12"><div className="mx-auto max-w-5xl rounded-[2rem] bg-[#f4efff] p-8 md:p-12"><h2 className="text-3xl font-semibold uppercase tracking-wide md:text-5xl">Ready to test DOCAI?</h2><p className="mt-4 text-sm font-semibold uppercase leading-7 tracking-widest text-black/70">Share the hosted link with friends. Ask them to test language switch, signup, consultation, pricing and WhatsApp flow.</p><div className="mt-8 flex flex-wrap gap-3"><Link to="/signup" className="rounded-full bg-black px-5 py-3 text-xs font-semibold uppercase tracking-widest text-white">Create Account</Link><Link to="/consultation" className="rounded-full border border-black px-5 py-3 text-xs font-semibold uppercase tracking-widest text-black">Try Consultation</Link></div></div></section>
+      {/* 2. CREATE ACCOUNT / FEEDBACK */}
+      <section id="feedback" className="px-5 py-20 sm:px-8 md:px-12 bg-white">
+        <div className="mx-auto max-w-5xl rounded-[2rem] bg-[#f4efff] p-8 md:p-12">
+          <h2 className="text-3xl font-semibold uppercase tracking-wide md:text-5xl">Ready to test DOCAI?</h2>
+          <p className="mt-4 text-sm font-semibold uppercase leading-7 tracking-widest text-black/70">Create your account now to access AI Checkups, Patient Records, and WhatsApp Flow.</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link to="/signup" className="rounded-full bg-black px-8 py-4 text-xs font-semibold uppercase tracking-widest text-white shadow-xl hover:scale-105 transition-transform">Create Account</Link>
+            <Link to="/consultation" className="rounded-full border border-black bg-white px-8 py-4 text-xs font-semibold uppercase tracking-widest text-black hover:bg-black hover:text-white transition-colors">Try Consultation</Link>
+          </div>
+        </div>
+      </section>
 
-      {/* 8. AI CHATBOT SECTION (NEW) */}
+      {/* 3. AI CHATBOT SECTION (WITH REAL HINGLISH API) */}
       <AIChatBot />
+
+      {/* 4. REAL DOCTOR/PATIENT IMAGES */}
+      <section className="px-5 py-20 sm:px-8 md:px-12 bg-white">
+        <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80" alt="Doctor treating patient" className="rounded-[2rem] shadow-xl w-full h-[400px] object-cover border border-black/10 hover:scale-[1.02] transition-transform" />
+          <img src="https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?auto=format&fit=crop&w=800&q=80" alt="Rural healthcare" className="rounded-[2rem] shadow-xl w-full h-[400px] object-cover border border-black/10 hover:scale-[1.02] transition-transform" />
+        </div>
+      </section>
+
+      {/* 5. MVP EXPERTISE */}
+      <section id="expertise" className="px-5 py-20 sm:px-8 md:px-12 bg-[#fbfbfb]">
+        <SectionTitle eyebrow="MVP" title={t.featureTitle} />
+        <div className="mx-auto mt-10 grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map(([Icon, title, text]) => <InfoCard key={title} Icon={Icon} title={title} text={text} />)}
+        </div>
+      </section>
+
+      {/* 6. WORKFLOW & RURAL INDIA */}
+      <section id="workflow" className="bg-black px-5 py-20 text-white sm:px-8 md:px-12"><div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2 md:items-center"><div><p className="text-xs font-semibold uppercase tracking-[0.35em]" style={{ color: ACCENT }}>Workflow</p><h2 className="mt-4 text-3xl font-semibold uppercase tracking-wide sm:text-5xl">Online-only system</h2><p className="mt-5 text-sm font-semibold uppercase leading-7 tracking-widest text-white/70">User opens app → selects language → fills symptom form → AI triage summary → WhatsApp support → admin dashboard → doctor follow-up.</p></div><div className="grid gap-3">{["No offline visit needed to start", "Works as a shareable web app", "Can be hosted free on Vercel/Netlify", "Future: Firebase, payments, voice notes"].map((item) => <div key={item} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm font-semibold uppercase tracking-widest"><Check size={18} style={{ color: ACCENT }} /> {item}</div>)}</div></div></section>
+      <section className="px-5 py-20 sm:px-8 md:px-12 bg-white"><SectionTitle eyebrow="Rural India" title={t.ruralTitle} text={t.ruralText} /></section>
+
+      {/* 7. OUR STORY (AT THE BOTTOM) */}
+      <section id="story" className="px-5 py-20 sm:px-8 md:px-12 bg-[#f4efff]">
+        <div className="mx-auto max-w-4xl text-center">
+          <HeartPulse size={48} className="mx-auto mb-6" style={{ color: ACCENT }} />
+          <h2 className="text-3xl font-semibold uppercase tracking-wide md:text-5xl text-black">
+            {t.storyTitle}
+          </h2>
+          <p className="mt-6 text-sm font-semibold uppercase leading-8 tracking-widest text-black/70 md:text-lg">
+            {t.storyText}
+          </p>
+          <div className="mt-8">
+            <span className="inline-block border-b-2 border-black pb-1 text-xs font-bold uppercase tracking-widest">A Vision By Vikram Rathore</span>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }
 
+// REAL AI CHATBOT USING POLLINATIONS API
 function AIChatBot() {
-  const [messages, setMessages] = useState([{ role: "ai", content: "Hi! I am DOCAI Health Assistant. Ask me any health-related question here." }]);
+  const [messages, setMessages] = useState([{ role: "ai", content: "Namaste! Main DOCAI Health Assistant hoon. Aap apne health se juda koi bhi sawaal mujhse pooch sakte hain." }]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim()) return;
     const newMsgs = [...messages, { role: "user", content: input }];
     setMessages(newMsgs);
     setInput("");
     setLoading(true);
 
-    // Mocking an Open Source LLM Response for MVP
-    setTimeout(() => {
-      setMessages([...newMsgs, { role: "ai", content: `Based on my AI knowledge, symptoms like "${input}" should be monitored carefully. Please rest well, stay hydrated, and use our "Start Checkup" button to send a detailed report to a certified doctor. (Note: Powered by Open Source AI)` }]);
+    try {
+      // Calling free LLM API to get Hinglish medical response
+      const promptText = `You are DOCAI, a smart health assistant for rural India. Answer the following health query strictly in "Hinglish" (Hindi language written in English alphabet). Keep it helpful, simple, professional, and within 3-4 sentences. Always add a short disclaimer to consult a doctor. User query: ${input}`;
+      const url = `https://text.pollinations.ai/${encodeURIComponent(promptText)}`;
+      
+      const res = await fetch(url);
+      const textResponse = await res.text();
+      
+      setMessages([...newMsgs, { role: "ai", content: textResponse }]);
+    } catch (error) {
+      console.error(error);
+      setMessages([...newMsgs, { role: "ai", content: "Bhai, abhi network me issue hai. Kripya apna internet connection check kijiye aur dobara try kijiye." }]);
+    } finally {
       setLoading(false);
-    }, 1500);
+    }
   };
 
   return (
-    <section id="chatbot" className="px-5 pb-24 sm:px-8 md:px-12 bg-[#fbfbfb]">
-      <SectionTitle eyebrow="AI Assistant" title="Ask AI Doctor" text="Powered by Open Source LLM Technology" />
-      <div className="mx-auto max-w-3xl mt-10 rounded-[2rem] bg-white border border-black/10 shadow-xl overflow-hidden flex flex-col h-[500px]">
-        <div className="bg-black text-white p-5 flex items-center gap-3">
-          <Bot size={28} style={{ color: ACCENT }} />
-          <div>
-            <h3 className="font-bold uppercase tracking-widest text-sm">DOCAI Smart Bot</h3>
-            <p className="text-[10px] text-white/50 uppercase tracking-widest">Always Online</p>
+    <section id="chatbot" className="px-5 py-20 sm:px-8 md:px-12 bg-[#fbfbfb] border-t border-black/5">
+      <SectionTitle eyebrow="AI Assistant" title="Ask DOCAI Bot" text="Powered by Advanced AI for Quick Hinglish Responses" />
+      <div className="mx-auto max-w-3xl mt-10 rounded-[2rem] bg-white border border-black/10 shadow-2xl overflow-hidden flex flex-col h-[550px]">
+        <div className="bg-black text-white p-5 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-white/10 rounded-full animate-pulse"><Bot size={24} style={{ color: ACCENT }} /></div>
+            <div>
+              <h3 className="font-bold uppercase tracking-widest text-sm">DOCAI Smart Bot</h3>
+              <p className="text-[10px] text-green-400 font-bold uppercase tracking-widest">● Online Now</p>
+            </div>
           </div>
         </div>
         <div className="flex-1 overflow-y-auto p-5 space-y-4 bg-slate-50">
           {messages.map((m, i) => (
             <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-              <div className={`max-w-[80%] p-4 rounded-2xl text-xs font-semibold uppercase leading-6 tracking-widest ${m.role === 'user' ? 'bg-black text-white rounded-br-none' : 'bg-white border border-black/10 text-black rounded-bl-none shadow-sm'}`}>
+              <div className={`max-w-[85%] p-4 rounded-2xl text-xs font-semibold uppercase leading-6 tracking-widest ${m.role === 'user' ? 'bg-black text-white rounded-br-none shadow-md' : 'bg-white border border-black/10 text-black rounded-bl-none shadow-sm'}`}>
                 {m.content}
               </div>
             </div>
           ))}
-          {loading && <div className="text-black/50 text-xs font-bold uppercase tracking-widest animate-pulse">AI is typing...</div>}
+          {loading && <div className="text-black/50 text-xs font-bold uppercase tracking-widest animate-pulse flex items-center gap-2"><Bot size={16}/> AI is typing...</div>}
         </div>
-        <div className="p-4 bg-white border-t border-black/10 flex gap-3">
-          <input value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>e.key === 'Enter' && handleSend()} placeholder="Type your health question..." className="flex-1 rounded-full border border-black/20 bg-black/[0.02] px-6 py-4 text-xs font-semibold uppercase tracking-widest outline-none focus:border-black" />
-          <button onClick={handleSend} className="bg-black text-white p-4 rounded-full flex items-center justify-center hover:scale-105 transition-transform"><ArrowRight size={20}/></button>
+        <div className="p-4 bg-white border-t border-black/10 flex gap-3 items-center">
+          <input value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>e.key === 'Enter' && handleSend()} placeholder="Apna sawaal yahan likhiye..." className="flex-1 rounded-full border border-black/20 bg-black/[0.02] px-6 py-4 text-xs font-semibold uppercase tracking-widest outline-none focus:border-black focus:ring-2 focus:ring-black/5" />
+          <button onClick={handleSend} disabled={loading} className="bg-black text-white p-4 rounded-full flex items-center justify-center hover:scale-105 transition-transform disabled:opacity-50"><ArrowRight size={20}/></button>
         </div>
       </div>
     </section>
